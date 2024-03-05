@@ -5,9 +5,14 @@ pushd ..
 printf "\nInstall Keycloak ...\n"
 # Create Keycloak namespace if it does not yet exist
 kubectl create namespace keycloak --dry-run=client -o yaml | kubectl apply -f -
-kubectl -n keycloak apply -f keycloak/keycloak.yaml
 
+kubectl apply -f keycloak/secrets.yaml
+kubectl apply -f keycloak/keycloak-db-pv.yaml
+kubectl apply -f keycloak/keycloak-postgres.yaml
+printf "\nWait for Keycloak Postgres readiness ...\n"
+kubectl -n keycloak rollout status deploy/postgres
 
+kubectl apply -f keycloak/keycloak.yaml
 printf "\nWait for Keycloak readiness ...\n"
 kubectl -n keycloak rollout status deploy/keycloak
 
