@@ -100,7 +100,7 @@ curl -v -H "Authorization: Bearer $ACCESS_TOKEN" http://api.example.com/httpbin/
 
 Note that you will now get a 403.
 
-## Conclusinon
+## Conclusion
 What happens is that the ExtAuth server refuses the `AuthConfig` when it can't access the `remoteJwks` URL when it tries to load the config. And since the `AuthConfig` is not loaded at all, the `refreshInterval` does not have any influence on JWKS refetching.
 
 The only way to resolve this atm is to restart the ExtAuth server when the `remoteJwks` URL is reachable.
