@@ -99,5 +99,3 @@ curl -v -H "Authorization: Bearer $ACCESS_TOKEN" http://api.example.com/httpbin/
 ```
 
 Note that you will now get a 403.
-
-
