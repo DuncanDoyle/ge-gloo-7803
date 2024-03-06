@@ -16,13 +16,13 @@ kubectl apply -f keycloak/keycloak.yaml
 printf "\nWait for Keycloak readiness ...\n"
 kubectl -n keycloak rollout status deploy/keycloak
 
-printf "\Deploy HTTPBin service ...\n"
+printf "\nDeploy HTTPBin service ...\n"
 kubectl apply -f apis/httpbin.yaml
 
-printf "\Deploy OAuth AuthConfig ...\n"
+printf "\nDeploy OAuth AuthConfig ...\n"
 kubectl apply -f policies/extauth/auth-config-oauth.yaml
 
-printf "\Deploy VirtualServices ...\n"
+printf "\nDeploy VirtualServices ...\n"
 kubectl apply -f virtualservices/api-example-com-vs.yaml
 kubectl apply -f virtualservices/keycloak-example-com-vs.yaml
 
